@@ -12,7 +12,10 @@ This project involves creating SQL scripts to set up a database called Superhero
 ### Installation
 1. Clone this repository.
 2. Open SSMS and connect to your SQL Server instance.
-3. Run the SQL scripts in the following order:
+3. Update the connection string in your C# code to match your SQL Server instance.
+   You can find the connection string in the `ConnectionStringHelper` class in the `Chinook.Repositories` namespace.
+   Replace the value of `connectionStringBuilder.DataSource` with the address of your SQL Server instance.
+5. Run the SQL scripts in the following order:
 
 ### 01_dbCreate.sql
 Creates the SuperheroesDb database.
