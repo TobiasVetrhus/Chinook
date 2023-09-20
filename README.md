@@ -12,10 +12,11 @@ This project involves creating SQL scripts to set up a database called Superhero
 ### Installation
 1. Clone this repository.
 2. Open SSMS and connect to your SQL Server instance.
-3. Update the connection string in your C# code to match your SQL Server instance.
-   You can find the connection string in the `ConnectionStringHelper` class in the `Chinook.Repositories` namespace.
-   Replace the value of `connectionStringBuilder.DataSource` with the address of your SQL Server instance.
-5. Run the SQL scripts in the following order:
+3. Update the connection string in your C# code to match your SQL Server instance. You can find the connection string in the `ConnectionStringHelper` class in the `Chinook.Repositories` namespace. Replace the value of `connectionStringBuilder.DataSource` with the address of your SQL Server instance.
+
+4. Run the SQL scripts in the following order:
+
+**Note: Please run the following SQL scripts in SQL Server Management Studio (SSMS):**
 
 ### 01_dbCreate.sql
 Creates the SuperheroesDb database.
@@ -47,8 +48,8 @@ Deletes an assistant by name.
 ## Usage
 - You can use the provided scripts to set up the Superheroes database and perform CRUD operations on superheroes, assistants, and powers.
 
-## Appendix B: Reading Data with SQL Client
-This section pertains to a separate part of the project where you interact with the Chinook database using C# and SQL Client library.
+### Appendix B: Reading Data with SQL Client (Visual Studio)
+- This section pertains to a separate part of the project where you interact with the Chinook database using C# and SQL Client library in Visual Studio.
 
 ### Customer Requirements
 - Read all customers, specific customers, or customers by name.
@@ -58,6 +59,7 @@ This section pertains to a separate part of the project where you interact with 
 - Get the number of customers in each country.
 - Get the highest spending customers.
 - Determine the most popular genre for a given customer.
+
 
 ## Contributors
 [Tobias Vetrhus](https://github.com/TobiasVetrhus)
