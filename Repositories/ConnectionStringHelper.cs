@@ -11,7 +11,6 @@ namespace Chinook.Repositories
             connectionStringBuilder.InitialCatalog = "Chinook";
             connectionStringBuilder.IntegratedSecurity = true;
             connectionStringBuilder.TrustServerCertificate = true;
-            //connectionStringBuilder.Encrypt = false; Disabling SSL encryption for testing and development. Not recommended for production.
             return connectionStringBuilder.ConnectionString;
         }
     }
