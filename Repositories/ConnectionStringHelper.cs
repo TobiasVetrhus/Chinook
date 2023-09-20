@@ -4,6 +4,12 @@ namespace Chinook.Repositories
 {
     public class ConnectionStringHelper
     {
+        /// <summary>
+        /// Retrieves the connection string for the Chinook database.
+        /// </summary>
+        /// <returns>
+        /// A string representing the connection string to the Chinook database.
+        /// </returns> 
         public static string GetConnectionString()
         {
             SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
