@@ -5,7 +5,15 @@ namespace Chinook.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        public bool Add(Customer customer)
+        /// <summary>
+        /// Adds a new customer to the database.
+        /// </summary>
+        /// <param name="customer">The customer object to add.</param>
+        /// <returns>
+        /// True if the customer was successfully added; otherwise, false.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
+ public bool Add(Customer customer)
         {
             bool success = false;
 
@@ -38,6 +46,15 @@ namespace Chinook.Repositories
 
             return success;
         }
+
+        /// <summary>
+        /// Retrieves a list of customer countries along with the count of customers in each country.
+        /// </summary>
+        /// <returns>
+        /// A list of CustomerCountry objects representing countries and customer counts.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
+
 
         public IEnumerable<CustomerCountry> CustomerCountry()
         {
@@ -72,6 +89,14 @@ namespace Chinook.Repositories
 
             return countryCountList;
         }
+        /// <summary>
+        /// Retrieves a list of all customers from the database.
+        /// </summary>
+        /// <returns>
+        /// A list of Customer objects representing all customers.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
+
 
         public IEnumerable<Customer> GetAll()
         {
@@ -111,7 +136,16 @@ namespace Chinook.Repositories
 
             return customerList;
         }
-
+       
+        /// <summary>
+        /// Retrieves a customer by their unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the customer.</param>
+        /// <returns>
+        /// A Customer object representing the customer with the specified ID.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
+      
         public Customer GetById(int id)
         {
             Customer customer = new Customer();
@@ -153,6 +187,14 @@ namespace Chinook.Repositories
             return customer;
         }
 
+        /// <summary>
+        /// Retrieves a list of customers by their first name.
+        /// </summary>
+        /// <param name="FirstName">The first name to search for.</param>
+        /// <returns>
+        /// A list of Customer objects matching the provided first name.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
         public IEnumerable<Customer> GetByName(string FirstName)
         {
             List<Customer> customerList = new List<Customer>();
@@ -194,6 +236,17 @@ namespace Chinook.Repositories
 
             return customerList;
         }
+
+        /// <summary>
+        /// Retrieves a page of customers with a specified limit and offset.
+        /// </summary>
+        /// <param name="limit">The maximum number of records to retrieve.</param>
+        /// <param name="offset">The number of records to skip before retrieving.</param>
+        /// <returns>
+        /// A list of Customer objects representing the requested page of customers.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
+      
 
         public IEnumerable<Customer> GetPage(int limit, int offset)
         {
@@ -237,6 +290,15 @@ namespace Chinook.Repositories
 
             return customerList;
         }
+
+        /// <summary>
+        /// Retrieves the top genres for a customer based on the number of tracks purchased.
+        /// </summary>
+        /// <param name="customerId">The unique identifier of the customer.</param>
+        /// <returns>
+        /// A CustomerGenre object containing the customer's first and last name along with a list of top genres.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
 
         public CustomerGenre TopGenres(int customerId)
         {
@@ -293,6 +355,14 @@ namespace Chinook.Repositories
             return customerPopularGenres;
         }
 
+
+        /// <summary>
+        /// Retrieves a list of the top spending customers in descending order of their total spent amount.
+        /// </summary>
+        /// <returns>
+        /// A list of CustomerSpender objects representing the top spending customers.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
         public IEnumerable<CustomerSpender> TopSpenders()
         {
             List<CustomerSpender> totalSpentList = new List<CustomerSpender>();
@@ -332,6 +402,14 @@ namespace Chinook.Repositories
             return totalSpentList;
         }
 
+        /// <summary>
+        /// Updates customer information in the database.
+        /// </summary>
+        /// <param name="customer">The Customer object containing updated information.</param>
+        /// <returns>
+        /// True if the customer information was successfully updated; otherwise, false.
+        /// </returns>
+        /// <exception cref="SqlException">Thrown if there is an issue with the SQL database.</exception>
         public bool Update(Customer customer)
         {
             bool success = false;
