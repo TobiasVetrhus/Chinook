@@ -17,7 +17,7 @@ namespace Chinook
             //TestUpdate(repository); -- WORKS
             //TestPage(repository); -- WORKS
             //TestCustomerCounty(repository); -- WORKS
-            //TestCustomerSpender(repository); -- WORKS
+            TestCustomerSpender(repository);
             //TestCustomerGenre(repository); -- WORKS
         }
 
@@ -88,7 +88,7 @@ namespace Chinook
         {
             Customer test = new Customer()
             {
-                CustomerId = 64,
+                CustomerId = 1,
                 FirstName = "John",
                 LastName = "Doe",
                 Country = "Sverige",
@@ -145,7 +145,7 @@ namespace Chinook
 
         static void PrintCustomerSpender(CustomerSpender customer)
         {
-            Console.WriteLine($" --- {customer.FirstName} - {customer.LastName} - {customer.InvoiceCount}");
+            Console.WriteLine($" --- {customer.FirstName} - {customer.LastName} - {customer.TotalSpent}");
         }
 
         static void PrintCustomerGenre(CustomerGenre customer)

@@ -295,9 +295,13 @@ namespace Chinook.Repositories
 
         public IEnumerable<CustomerSpender> TopSpenders()
         {
-            List<CustomerSpender> invoiceCountList = new List<CustomerSpender>();
-            string sql = "SELECT FirstName, LastName, COUNT(Invoice.CustomerId) AS InvoiceCount FROM Customer INNER JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId GROUP BY FirstName, LastName ORDER BY InvoiceCount DESC;";
-
+            List<CustomerSpender> totalSpentList = new List<CustomerSpender>();
+            string sql = "SELECT c.FirstName, c.LastName, i.TotalSpent " +
+                         "FROM Customer c " +
+                         "INNER JOIN (SELECT CustomerId, SUM(Total) AS TotalSpent " +
+                         "            FROM Invoice " +
+                         "            GROUP BY CustomerId) i ON c.CustomerId = i.CustomerId " +
+                         "ORDER BY i.TotalSpent DESC";
             try
             {
                 using (SqlConnection conn = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
@@ -313,8 +317,8 @@ namespace Chinook.Repositories
                                 CustomerSpender customerSpender = new CustomerSpender();
                                 customerSpender.FirstName = reader.IsDBNull(0) ? null : reader.GetString(0);
                                 customerSpender.LastName = reader.IsDBNull(1) ? null : reader.GetString(1);
-                                customerSpender.InvoiceCount = reader.GetInt32(2);
-                                invoiceCountList.Add(customerSpender);
+                                customerSpender.TotalSpent = reader.IsDBNull(2) ? 0.0 : Convert.ToDouble(reader.GetDecimal(2));
+                                totalSpentList.Add(customerSpender);
                             }
                         }
                     }
@@ -325,7 +329,7 @@ namespace Chinook.Repositories
                 Console.WriteLine(ex.Message);
             }
 
-            return invoiceCountList;
+            return totalSpentList;
         }
 
         public bool Update(Customer customer)
